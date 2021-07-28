@@ -4,6 +4,7 @@ plugins {
 }
 
 apply from: '../ktlint/ktlint.gradle'
+apply from: '../detekt/detekt.gradle'
 
 android {
     compileSdkVersion 30
