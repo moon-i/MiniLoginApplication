@@ -1,0 +1,25 @@
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    detekt
+}
+
+dependencies {
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.18.0-RC2'
+}
+
+task detekt(type: JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+
+    def input = "$projectDir"
+    def exclude = ".*/build/.*,.*/resources/.*"
+    def params = [ '-i', input, '-ex', exclude]
+
+    args(params)
+}
+
+// Remove this line if you don't want to run detekt on every build
+check.dependsOn detekt
