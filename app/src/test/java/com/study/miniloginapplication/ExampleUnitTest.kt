@@ -1,4 +1,4 @@
-package com.shinhan.miniloginapplication
+package com.study.miniloginapplication
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
