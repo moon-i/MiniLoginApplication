@@ -1,4 +1,4 @@
-package com.shinhan.miniloginapplication
+package com.study.miniloginapplication
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.shinhan.miniloginapplication", appContext.packageName)
+        assertEquals("com.study.miniloginapplication", appContext.packageName)
     }
 }

@@ -1,4 +1,4 @@
-package com.shinhan.miniloginapplication
+package com.study.miniloginapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
