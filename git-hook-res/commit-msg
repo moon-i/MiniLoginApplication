@@ -11,16 +11,16 @@ $regex = /^\[MLA-[0-9]+\][\d\D]*refs[\s]?-[\s]?.*/
 
 # enforced custom commit message format
 def check_message_format
-  missed_revs = `git rev-list #{$oldrev}..#{$newrev}`.split("\n")
-  missed_revs.each do |rev|
-    message = `git cat-file commit #{rev} | sed '1,\^$\d’`
-    if !$regex.match(message)
-      puts "[POLICY] Your message is not formatted correctly"
-      exit 1
-    end
+  message_file = ARGV[0]
+  message = File.read(message_file)
+  if !$regex.match(message)
+    puts "[POLICY] Your message is not formatted correctly"
+    puts "[RULE] [MLA-{issueTicketNumber}] \n\n /* message */ \n\n refs - {issueLink}"
+    exit 1
   end
 end
 check_message_format
+
 -------------------------------------------------------------------
 
 2. 확인하기
