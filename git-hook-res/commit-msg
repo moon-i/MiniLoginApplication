@@ -1,0 +1,27 @@
+1. 파일 생성하기
+cd .git/hooks
+touch commit-msg
+vi commit-msg
+
+commit-msg 작성------------------------------------------------------
+
+#!/usr/bin/env ruby
+
+$regex = /^\[MLA-[0-9]+\][\d\D]*refs[\s]?-[\s]?.*/
+
+# enforced custom commit message format
+def check_message_format
+  message_file = ARGV[0]
+  message = File.read(message_file)
+  if !$regex.match(message)
+    puts "[POLICY] Your message is not formatted correctly"
+    puts "[RULE] [MLA-{issueTicketNumber}] \n\n /* message */ \n\n refs - {issueLink}"
+    exit 1
+  end
+end
+check_message_format
+
+-------------------------------------------------------------------
+
+2. 확인하기
+잘못된 형식의 commit, 올바른 형식의 commit 모두 시도해보고 확인하기 
