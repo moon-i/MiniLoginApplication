@@ -1,0 +1,28 @@
+1. 파일 생성하기
+cd .git/hooks
+touch pre-commit
+chmod +x .git/hooks/pre-commit
+vi pre-commit
+
+commit-msg 작성------------------------------------------------------
+
+#!/bin/sh
+
+echo "============START STATIC ANALYSIS=============="
+
+./gradlew ktlint detekt
+
+status=$?
+
+if [ "$status" = 0 ] ; then
+    echo "[SUCCESS] STATIC ANALYSIS"
+    exit 0
+else
+    echo 1>&2 "[ERROR] STATIC ANALYSIS"
+    exit 1
+fi
+
+-------------------------------------------------------------------
+
+2. 확인하기
+잘못된 형식의 함수같은거 하나 생성하고 commit 해보기
