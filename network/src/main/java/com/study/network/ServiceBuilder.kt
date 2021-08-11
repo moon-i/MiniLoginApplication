@@ -9,15 +9,17 @@ package com.study.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object ServiceBuilder {
     private const val baseURL = "https://randomuser.me/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
+        .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun<T> buildService(service: Class<T>): T{
-        return retrofit.create(service)
+    fun buildService(): UserAPI{
+        return retrofit.create(UserAPI::class.java)
     }
 }
