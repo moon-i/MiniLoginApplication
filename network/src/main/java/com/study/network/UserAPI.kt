@@ -12,5 +12,5 @@ import retrofit2.http.*
 
 interface UserAPI {
     @GET("/api")
-    fun getUsers(@Query("results") key: Int): Call<String>
+    fun<T> getUsers(@Query("results") key: Int, returnClass: Class<T>): Call<T>
 }
