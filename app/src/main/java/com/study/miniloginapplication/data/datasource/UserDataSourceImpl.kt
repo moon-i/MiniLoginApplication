@@ -8,10 +8,11 @@ package com.study.miniloginapplication.data.datasource
 //
 
 import com.study.miniloginapplication.data.spec.ResponseUsers
-import com.study.network.RequestMapper
+import com.study.network.NetworkService
+import com.study.network.ServiceBuilder
 
 class UserDataSourceImpl : UserDataSource {
     override suspend fun getUserList(size: Int): ResponseUsers? {
-        return RequestMapper().getUsers(size, ResponseUsers::class.java)
+        return NetworkService.requestNetwork(ServiceBuilder.buildService().getUsers(size, ResponseUsers::class.java))
     }
 }

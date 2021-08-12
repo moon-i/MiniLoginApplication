@@ -10,7 +10,7 @@ package com.study.network
 import retrofit2.Call
 
 object NetworkService {
-    fun requestNetwork(requestCall: Call<String>): String? {
+    fun<T> requestNetwork(requestCall: Call<T>): T? {
         requestCall.execute().apply {
             return if (isSuccessful) {
                 body()
